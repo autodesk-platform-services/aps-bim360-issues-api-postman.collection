@@ -94,17 +94,17 @@ In BIM360, the reference of issue with assets or rfis is managed by Relationship
   -  The 04 step get all referenced assets of one issue
 
 ## Documentaions
- 
-	- [Field Guide](https://aps.autodesk.com/en/docs/bim360/v1/overview/field-guide/issues)
-    - [Migration Guide]( https://aps.autodesk.com/en/docs/bim360/v1/overview/migration-guides/Issues_v1_to_v2): outlines and details of comparison of version 1 and version 2
-    - [Retrieve Container ID of Issue](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/issuesv2/retrieve-container-id)
-    - [Retrieve Issues Data](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/issuesv2/retrieve-issues-v2)
-    - [Create Issues Data](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/issuesv2/create-issues-v2)
-    - [Attach BIM 360 Document Management Files to Issues](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/issuesv2/attach-BIM-360-files-v2)
-    - [Retrieve Issue Custom Attributes Mapped to an Issue Type](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/issuesv2/retrieve-custom-attr-issues-v2)
-    - [Render Document-related (Pushpin) Issues and RFIs in Your App] (https://aps.autodesk.com/en/docs/bim360/v1/tutorials/pushpins/retrieve-pushpin-v2)
-    - [Create Document-related (Pushpin) Issues and RFIs in Your App](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/pushpins/create-pushpin-v2)
-    - [Upload Local Attachment](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/issuesv2/attach-local-attachment-issues-v2) 
+
+- [Field Guide](https://aps.autodesk.com/en/docs/bim360/v1/overview/field-guide/issues)
+- [Migration Guide](https://aps.autodesk.com/en/docs/bim360/v1/overview/migration-guides/Issues_v1_to_v2): outlines and details of comparison of version 1 and version 2
+- [Retrieve Container ID of Issue](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/issuesv2/retrieve-container-id)
+- [Retrieve Issues Data](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/issuesv2/retrieve-issues-v2) 
+- [Create Issues Data](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/issuesv2/create-issues-v2)
+-  [Attach BIM 360 Document Management Files to Issues](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/issuesv2/attach-BIM-360-files-v2)
+- [Retrieve Issue Custom Attributes Mapped to an Issue Type](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/issuesv2/retrieve-custom-attr-issues-v2)
+- [Render Document-related (Pushpin) Issues and RFIs in Your App](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/pushpins/retrieve-pushpin-v2)
+- [Create Document-related (Pushpin) Issues and RFIs in Your App](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/pushpins/create-pushpin-v2) 
+- [Upload Local Attachment](https://aps.autodesk.com/en/docs/bim360/v1/tutorials/issuesv2/attach-local-attachment-issues-v2)
 
 ## Blogs
 - [Forge Blog](https://aps.autodesk.com)
