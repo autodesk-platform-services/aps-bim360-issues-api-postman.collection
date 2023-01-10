@@ -40,6 +40,8 @@ The API supports **3 legged token** only. This collection takes **[Inheriting au
 
 7. Import the collection and environment files to Postman
 
+    <p align="center"><img src="./help/collection.png" width="400" ></p>  
+
 8. In environment, input _client id_, _client secret_, _account name_ and _project name_.
 
    <p align="center"><img src="./help/apiref-env.png" width="600" ></p>  
@@ -62,21 +64,19 @@ The API supports **3 legged token** only. This collection takes **[Inheriting au
    
 ## API Test
 
-1. Assume the steps of **Setup** have been performed and the access token is ready.
-
-2. Run the scripts in **Run First**. It will get account(hub) id, project id and one user id(for assignee), location id,one document urn(for attaching to issue).   
-
-3. Run the endpoints in **API References**. Follow [API References](https://aps.autodesk.com/en/docs/bim360/v1/reference/http/issues-v2-users-me-GET/) to verify if the APIs work well. Try to change the parameters in various scenarios to see how it goes. Check UI if it works well with API (such as creating/patching new issue and creating new comments etc. )
+### API References
+Assume the steps of **Setup** have been performed and the access token is ready.Run the scripts in **Run First**. It will get account(hub) id, project id and one user id(for assignee), location id,one document urn(for attaching to issue). Run the endpoints in **API References**. Follow [API References](https://aps.autodesk.com/en/docs/bim360/v1/reference/http/issues-v2-users-me-GET/) to verify if the APIs work well. Try to change the parameters in various scenarios to see how it goes. Check UI if it works well with API (such as creating/patching new issue and creating new comments etc. )
     
-    <p align="center"><img src="./help/collection.png" width="400" ></p>  
 
-4. To test downloading original files of attachments, run scripts in  **Download Attachment**. It assumes one issue is available with some attachments. 
+### Download Attachment
+To test downloading original files of attachments, run scripts in  **Download Attachment**. It assumes one issue is available with some attachments. 
   - The 01 step will return information of first attachment. If urnType is **dm**, the urn pattern is like a base64 encoded string. The post script will transform it to a version urn pattern. If the urnType is **oss**, it is storage urn already, the post script will get bucket key and object key directly 
   - if urnType is **dm**, run 02 step to get storage urn by Data Management API, finally get bucket key and object key 
   - The 03 step is to get S3 signed url
   - The 04 step is to download the file by the signed url
 
-5. To test uploading local files as attachments, run scripts in  **Upload Local Attachment**. It assumes one issue is available.
+### Upload Local Attachment
+To test uploading local files as attachments, run scripts in  **Upload Local Attachment**. It assumes one issue is available.
  - The 01 step create an attachment for the issue with  urnType = **oss**. It will create the storage in the invisible folder of issue
  - The 02 step will generate S3 signed url for uploading by Data Management API
  - The 03 step is to upload the local binary file by the signed url
@@ -85,12 +85,13 @@ The API supports **3 legged token** only. This collection takes **[Inheriting au
 
  To verify if the attachment is attached successfully, follow the steps in Test #4. 
 
-4. (Optional) In BIM360, the reference of issue with assets or rfis is managed by Relationships API, which is a common across different modules. To work with **Issue>>References**, you can use [Relationship API](https://aps.autodesk.com/en/docs/acc/v1/reference/http/relationship-service-v2-search-relationships-GET/). This sample Postman collection includes a few sample usages. For more detail about Relationships API, please take a look [at this blog](https://aps.autodesk.com/blog/bim-360acc-relationships-api). 
+### Test Reference by Relationship API
+In BIM360, the reference of issue with assets or rfis is managed by Relationships API, which is a common across different modules. To work with **Issue>>References**, you can use [Relationship API](https://aps.autodesk.com/en/docs/acc/v1/reference/http/relationship-service-v2-search-relationships-GET/). This sample Postman collection includes a few sample usages. For more detail about Relationships API, please take a look [at this blog](https://aps.autodesk.com/blog/bim-360acc-relationships-api). 
 
   -  The 01 step is to get supported Relationships. you can check those that are available with BIM360 issues.
   -  The 02 step is to get one asset id by [Asset API](https://aps.autodesk.com/en/docs/bim360/v1/reference/http/assets-assets-v2-GET/)
   -  The 03 step is add reference between one issue and one asset
-  -  The 04 step get all referenced assets of one issue s
+  -  The 04 step get all referenced assets of one issue
     
 **Blogs**:
 - [Forge Blog](https://aps.autodesk.com)
