@@ -207,8 +207,8 @@
 									"",
 									"pm.test(\"find data of first document\", function () {",
 									"    var body = JSON.parse(responseBody); ",
-									"    var included = body.included",
-									"    //pm.environment.set(\"project_files_folder_urn\", find.id) ",
+									"    var one_included = body.included[0]",
+									"    pm.environment.set(\"one_document_base64_urn\", one_included.relationships.derivatives.data.id) ",
 									" ",
 									"    ",
 									"});"
@@ -1124,7 +1124,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"title\": \"[{{current_date_time}}]create issue by Issue V2 API-with Pushpin\",\n        \"description\": \"[{{current_date_time}}]create issue by Issue V2 API-with Pushpin\",\n        \"status\": \"open\",\n        \"assignedTo\": \"{{one_user_id}}\",\n        \"assignedToType\": \"user\",\n        \"dueDate\": \"{{due_date}}\",\n        \"issueSubtypeId\":\"{{one_sub_issue_type_id}}\", \n        \"rootCauseId\":\"{{one_root_cause_id}}\",\n        \"locationId\":\"{{one_location_id}}\",\n        \"linkedDocuments\": [\n        {\n            \"type\": \"TwoDVectorPushpin\",\n            \"urn\": \"urn:adsk.wipprod:dm.lineage:o1tdy8CEReW4XeExcRqh1w\", \n            \"createdAtVersion\": 3, \n            \"details\": {\n                \"viewable\": {\n                    \"id\": \"250a6ce5-ee70-fdca-bfc9-4111f54e9baa\",\n                    \"guid\": \"250a6ce5-ee70-fdca-bfc9-4111f54e9baa\",\n                    \"name\": \"{3D}\",\n                    \"is3D\": true \n                },\n                \"position\": {\n                    \"x\": -17.252720948028553,\n                    \"y\": 39.8403441619185,\n                    \"z\": 11.591292255137159\n                },\n                \"objectId\": 4352,\n                \"externalId\": \"a6aa132d-ccd7-408f-b2f9-ed67350c8c3a-0003b64a\",\n                \"viewerState\": {\n                    \"seedURN\": \"dXJuOmFkc2sud2lwcHJvZDpmcy5maWxlOnZmLm8xdGR5OENFUmVXNFhlRXhjUnFoMXc_dmVyc2lvbj0z\",\n                    \"viewport\": {\n                        \"up\": [\n                            0.3254195128849336,\n                            0.4239431401196343,\n                            0.8452066934065516\n                        ],\n                        \"eye\": [\n                            \"-78.4092659603074\",\n                            \"-131.08779271184284\",\n                            \"99.36837920443212\"\n                        ],\n                        \"name\": \"\",\n                        \"target\": [\n                            \"-5.115284533116451\",\n                            \"-35.60341206531248\",\n                            \"23.255352179268133\"\n                        ],\n                        \"pivotPoint\": [\n                            \"10.865917205810547\",\n                            \"-10.835281372070312\",\n                            \"13.451443724662813\"\n                        ],\n                        \"projection\": \"orthographic\",\n                        \"aspectRatio\": 1.502717391304348,\n                        \"worldUpVector\": [\n                            0,\n                            0,\n                            1\n                        ],\n                        \"isOrthographic\": true,\n                        \"distanceToOrbit\": 172.48677876175668,\n                        \"orthographicHeight\": 142.4165283379505\n                    },\n                    \"cutplanes\": [],\n                    \"floorGuid\": null,\n                    \"objectSet\": [\n                        {\n                            \"id\": [\n                                443\n                            ],\n                            \"hidden\": [],\n                            \"idType\": \"lmv\",\n                            \"isolated\": [],\n                            \"explodeScale\": 0\n                        }\n                    ],\n                    \"globalOffset\": {\n                        \"x\": -1.5187797546386719,\n                        \"y\": -48.585296630859375,\n                        \"z\": 10.43277554991916\n                    },\n                    \"renderOptions\": {\n                        \"toneMap\": {\n                            \"method\": 1,\n                            \"exposure\": -7,\n                            \"lightMultiplier\": -1e-20\n                        },\n                        \"appearance\": {\n                            \"ghostHidden\": true,\n                            \"antiAliasing\": true,\n                            \"displayLines\": true,\n                            \"ambientShadow\": false,\n                            \"displayPoints\": true,\n                            \"swapBlackAndWhite\": false,\n                            \"progressiveDisplay\": true\n                        },\n                        \"environment\": \"Boardwalk\",\n                        \"ambientOcclusion\": {\n                            \"radius\": 13.123359580052492,\n                            \"enabled\": false,\n                            \"intensity\": 1\n                        }\n                    },\n                    \"attributesVersion\": 2\n                }\n            }\n        }\n    ]\n\n}"
+							"raw": "{\n        \"title\": \"[{{current_date_time}}]create issue by Issue V2 API-with Pushpin\",\n        \"description\": \"[{{current_date_time}}]create issue by Issue V2 API-with Pushpin\",\n        \"status\": \"open\",\n        \"assignedTo\": \"{{one_user_id}}\",\n        \"assignedToType\": \"user\",\n        \"dueDate\": \"{{due_date}}\",\n        \"issueSubtypeId\":\"{{one_sub_issue_type_id}}\", \n        \"rootCauseId\":\"{{one_root_cause_id}}\",\n        \"locationId\":\"{{one_location_id}}\",\n\n        //document and object data come from pushpin extension of APS viewer\n        //check the tutorial for details: \n        //https://aps.autodesk.com/en/docs/bim360/v1/tutorials/pushpins/create-pushpin-v2/\n\n        \"linkedDocuments\": [\n        {\n            \"type\": \"TwoDVectorPushpin\",\n            //oss urn of document \n            \"urn\": \"urn:adsk.wipprod:dm.lineage:o1tdy8CEReW4XeExcRqh1w\", \n            //document version \n            \"createdAtVersion\": 3, \n            \"details\": {\n                \"viewable\": {\n                    //viewerable id\n                    \"id\": \"250a6ce5-ee70-fdca-bfc9-4111f54e9baa\",\n                     //  id of the view to load\n                    \"guid\": \"250a6ce5-ee70-fdca-bfc9-4111f54e9baa\",\n                    //name of the view\n                    \"name\": \"{3D}\",\n                    //is 3D or 2D\n                    \"is3D\": true \n                },\n                //object position\n                \"position\": {\n                    \"x\": -17.252720948028553,\n                    \"y\": 39.8403441619185,\n                    \"z\": 11.591292255137159\n                },\n                //svf2 or svf id of object\n                \"objectId\": 4352,\n                //external id of the object\n                \"externalId\": \"a6aa132d-ccd7-408f-b2f9-ed67350c8c3a-0003b64a\",\n                //view state \n                \"viewerState\": {\n                    //document urn in based64 encoded\n                    \"seedURN\": \"dXJuOmFkc2sud2lwcHJvZDpmcy5maWxlOnZmLm8xdGR5OENFUmVXNFhlRXhjUnFoMXc_dmVyc2lvbj0z\",\n                    //camera data\n                    \"viewport\": {\n                        \"up\": [\n                            0.3254195128849336,\n                            0.4239431401196343,\n                            0.8452066934065516\n                        ],\n                        \"eye\": [\n                            \"-78.4092659603074\",\n                            \"-131.08779271184284\",\n                            \"99.36837920443212\"\n                        ],\n                        \"name\": \"\",\n                        \"target\": [\n                            \"-5.115284533116451\",\n                            \"-35.60341206531248\",\n                            \"23.255352179268133\"\n                        ],\n                        \"pivotPoint\": [\n                            \"10.865917205810547\",\n                            \"-10.835281372070312\",\n                            \"13.451443724662813\"\n                        ],\n                        \"projection\": \"orthographic\",\n                        \"aspectRatio\": 1.502717391304348,\n                        \"worldUpVector\": [\n                            0,\n                            0,\n                            1\n                        ],\n                        \"isOrthographic\": true,\n                        \"distanceToOrbit\": 172.48677876175668,\n                        \"orthographicHeight\": 142.4165283379505\n                    },\n                    //other information of the view\n                    \"cutplanes\": [],\n                    \"floorGuid\": null,\n                    \"objectSet\": [\n                        {\n                            \"id\": [\n                                443\n                            ],\n                            \"hidden\": [],\n                            \"idType\": \"lmv\",\n                            \"isolated\": [],\n                            \"explodeScale\": 0\n                        }\n                    ],\n                    \"globalOffset\": {\n                        \"x\": -1.5187797546386719,\n                        \"y\": -48.585296630859375,\n                        \"z\": 10.43277554991916\n                    },\n                    \"renderOptions\": {\n                        \"toneMap\": {\n                            \"method\": 1,\n                            \"exposure\": -7,\n                            \"lightMultiplier\": -1e-20\n                        },\n                        \"appearance\": {\n                            \"ghostHidden\": true,\n                            \"antiAliasing\": true,\n                            \"displayLines\": true,\n                            \"ambientShadow\": false,\n                            \"displayPoints\": true,\n                            \"swapBlackAndWhite\": false,\n                            \"progressiveDisplay\": true\n                        },\n                        \"environment\": \"Boardwalk\",\n                        \"ambientOcclusion\": {\n                            \"radius\": 13.123359580052492,\n                            \"enabled\": false,\n                            \"intensity\": 1\n                        }\n                    },\n                    \"attributesVersion\": 2\n                }\n            }\n        }\n    ]\n\n}"
 						},
 						"url": {
 							"raw": "{{base_domain}}issues/v2/containers/:containerId/issues",
@@ -1147,7 +1147,7 @@
 							"variable": [
 								{
 									"key": "containerId",
-									"value": "{{project_id_without_b}}"
+									"value": "{{issue_container_id}}"
 								}
 							]
 						}
@@ -1270,7 +1270,7 @@
 					"response": []
 				},
 				{
-					"name": "POST Attachments with Document in Folder",
+					"name": "POST Attachments with document in visible folder",
 					"event": [
 						{
 							"listen": "test",
@@ -1296,7 +1296,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"test by v2 API\",\n    \"urn\":\"urn:adsk.objects:os.object:wip.dm.prod/1f9b16c6-728b-4fba-814f-08b16701d6c6.ifc\",\n    \"urnType\":\"dm\" \n}"
+							"raw": "{\n    \"name\":\"test by v2 API with with document in visible folder\",\n    \"urn\":\"{{one_document_base64_urn}}\",\n    \"urnType\":\"dm\" \n}"
 						},
 						"url": {
 							"raw": "{{base_domain}}issues/v2/containers/:containerId/issues/:issueId/attachments",
@@ -1340,12 +1340,20 @@
 									"pm.test(\"get bucket key and objecy key of one attachment: \", function () {",
 									"    var body = JSON.parse(responseBody); ",
 									"    var urn = body.results[0].urn",
+									"    var urnType = body.results[0].urnType",
 									"    console.log(urn)",
-									"    var split_by_splash = urn.split(\"/\")",
-									"    var split_by_colon = split_by_splash[0].split(\":\")",
+									"    console.log(urnType)",
 									"",
-									"    pm.environment.set(\"attachment_object_key\", split_by_splash[1]); ",
-									"    pm.environment.set(\"attachment_bucket_key\", split_by_colon[3]); ",
+									"    if(urnType == \"oss\"){ //file from local uploading. In invisible folder",
+									"     var split_by_splash = urn.split(\"/\")",
+									"     var split_by_colon = split_by_splash[0].split(\":\")",
+									" ",
+									"     pm.environment.set(\"attachment_object_key\", split_by_splash[1]); ",
+									"     pm.environment.set(\"attachment_bucket_key\", split_by_colon[3]); ",
+									"    }else{ //dm : document from visible folder",
+									"        ",
+									"    }",
+									"    ",
 									"});",
 									"",
 									"     "
@@ -1378,53 +1386,6 @@
 								{
 									"key": "issueId",
 									"value": "{{one_issue_id}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET S3 signed url for downloading attachment",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"GET S3 signed url for downloading attachment. Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									" "
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{base_domain}}/oss/v2/buckets/:bucketKey/objects/:objectKey/signeds3download",
-							"host": [
-								"{{base_domain}}"
-							],
-							"path": [
-								"oss",
-								"v2",
-								"buckets",
-								":bucketKey",
-								"objects",
-								":objectKey",
-								"signeds3download"
-							],
-							"variable": [
-								{
-									"key": "bucketKey",
-									"value": "{{attachment_bucket_key}}"
-								},
-								{
-									"key": "objectKey",
-									"value": "{{attachment_object_key}}"
 								}
 							]
 						}
@@ -1476,7 +1437,7 @@
 							"variable": [
 								{
 									"key": "projectId",
-									"value": "{{project_id_without_b}}"
+									"value": "{{issue_container_id}}"
 								}
 							]
 						}
@@ -1517,7 +1478,7 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.api+json",
+								"value": "application/json",
 								"type": "text"
 							}
 						],
@@ -1540,7 +1501,7 @@
 							"variable": [
 								{
 									"key": "containerId",
-									"value": "{{project_id_without_b}}"
+									"value": "{{issue_container_id}}"
 								},
 								{
 									"key": "issueId",
@@ -1585,7 +1546,7 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/vnd.api+json",
+								"value": "application/json",
 								"type": "text"
 							}
 						],
@@ -1615,84 +1576,7 @@
 							"variable": [
 								{
 									"key": "containerId",
-									"value": "{{project_id_without_b}}"
-								},
-								{
-									"key": "issueId",
-									"value": "{{one_issue_id}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "PATCH Issue-with Published",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Patch one issue with custom attributes. Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									" "
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"var d = new Date()",
-									"var current_date_time = d.getFullYear() ",
-									"                +\"-\" + ((\"0\" + (d.getUTCMonth()+1)).slice(-2) )",
-									"                + \"-\" +  (\"0\" + d.getUTCDate()).slice(-2)",
-									"pm.environment.set(\"current_date_time\", current_date_time);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/vnd.api+json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n       \"title\": \"Patch issue by {{creator_id}} at {{current_date_time}} with published\",\n        \"description\": \"patch one issue by {{creator_id}} at {{current_date_time}} with published\",\n        \"published\": false\n}"
-						},
-						"url": {
-							"raw": "{{base_domain}}/construction/issues/v1/projects/:projectId/issues/:issueId",
-							"host": [
-								"{{base_domain}}"
-							],
-							"path": [
-								"construction",
-								"issues",
-								"v1",
-								"projects",
-								":projectId",
-								"issues",
-								":issueId"
-							],
-							"query": [
-								{
-									"key": "page[limit]",
-									"value": "200",
-									"disabled": true
-								}
-							],
-							"variable": [
-								{
-									"key": "projectId",
-									"value": "9563e750-18ed-43f7-a415-bf17d5d0051d"
+									"value": "{{issue_container_id}}"
 								},
 								{
 									"key": "issueId",
@@ -2223,6 +2107,231 @@
 									"key": "attachmentId",
 									"value": "{{one_attachment_id}}"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Download Attachment",
+			"item": [
+				{
+					"name": "01-GET Attachments(assume id of one issue is available)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"get one issue attachments collection. Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									" ",
+									"",
+									"pm.test(\"get bucket key and objecy key of one attachment: \", function () {",
+									"    var body = JSON.parse(responseBody); ",
+									"    var urn = body.results[0].urn",
+									"    var urnType = body.results[0].urnType",
+									"    console.log(urn)",
+									"    console.log(urnType)",
+									"",
+									"    if(urnType == \"oss\"){ //file from local uploading. In invisible folder",
+									"     var split_by_splash = urn.split(\"/\")",
+									"     var split_by_colon = split_by_splash[0].split(\":\")",
+									" ",
+									"     pm.environment.set(\"attachment_object_key\", split_by_splash[1]); ",
+									"     pm.environment.set(\"attachment_bucket_key\", split_by_colon[3]); ",
+									"    }else{ //dm : document from visible folder",
+									"        var split_by_underscore = urn.split('_')",
+									"        var version_urn = Buffer.from(split_by_underscore[0], 'base64').toString('utf8') + \"%3F\"",
+									"                          + Buffer.from(split_by_underscore[1], 'base64').toString('utf8')",
+									"        console.log(version_urn)",
+									"        //version_urn = encodeURI(version_urn)",
+									"        pm.environment.set(\"version_urn\", version_urn); ",
+									"",
+									"        //next, run the script: 02-GET Oss Storage Urn (if urnType = dm)  to get bucket key and object key",
+									"    }",
+									"    ",
+									"});",
+									"",
+									"     "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_domain}}issues/v2/containers/:containerId/issues/:issueId/attachments",
+							"host": [
+								"{{base_domain}}issues"
+							],
+							"path": [
+								"v2",
+								"containers",
+								":containerId",
+								"issues",
+								":issueId",
+								"attachments"
+							],
+							"variable": [
+								{
+									"key": "containerId",
+									"value": "{{issue_container_id}}"
+								},
+								{
+									"key": "issueId",
+									"value": "{{one_issue_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "02-GET Oss Storage Urn (if urnType = dm)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"04-GET One Document Data, Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"find data of first document\", function () {",
+									"    var body = JSON.parse(responseBody); ",
+									"    var oss_storage_urn = body.data.relationships.storage.data.id",
+									"    console.log(oss_storage_urn)",
+									"     var split_by_splash = oss_storage_urn.split(\"/\")",
+									"     var split_by_colon = split_by_splash[0].split(\":\")",
+									" ",
+									"     pm.environment.set(\"attachment_object_key\", split_by_splash[1]); ",
+									"     pm.environment.set(\"attachment_bucket_key\", split_by_colon[3]); ",
+									"    ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_domain}}/data/v1/projects/:project_id/versions/:version_id",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"data",
+								"v1",
+								"projects",
+								":project_id",
+								"versions",
+								":version_id"
+							],
+							"variable": [
+								{
+									"key": "project_id",
+									"value": "b.{{project_id_without_b}}"
+								},
+								{
+									"key": "version_id",
+									"value": "{{version_urn}}"
+								}
+							]
+						},
+						"description": "GET all projects of one hub, and get one project Please provide the hub name (project_name) in environment variables"
+					},
+					"response": []
+				},
+				{
+					"name": "03-GET S3 signed url for downloading attachment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"GET S3 signed url for downloading attachment. Status code is 200\", function () {",
+									"    pm.environment.set(\"s3_download_url\", JSON.parse(responseBody).url); ",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									" "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_domain}}/oss/v2/buckets/:bucketKey/objects/:objectKey/signeds3download",
+							"host": [
+								"{{base_domain}}"
+							],
+							"path": [
+								"oss",
+								"v2",
+								"buckets",
+								":bucketKey",
+								"objects",
+								":objectKey",
+								"signeds3download"
+							],
+							"variable": [
+								{
+									"key": "bucketKey",
+									"value": "{{attachment_bucket_key}}"
+								},
+								{
+									"key": "objectKey",
+									"value": "{{attachment_object_key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "04-Download binary by S3 signed url",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{s3_download_url}}",
+							"host": [
+								"{{s3_download_url}}"
 							]
 						}
 					},
