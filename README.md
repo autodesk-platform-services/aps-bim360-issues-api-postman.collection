@@ -92,8 +92,11 @@ In BIM360, the reference of issue with assets or rfis is managed by Relationship
   -  The 02 step is to get one asset id by [Asset API](https://aps.autodesk.com/en/docs/bim360/v1/reference/http/assets-assets-v2-GET/)
   -  The 03 step is add reference between one issue and one asset
   -  The 04 step get all referenced assets of one issue
-    
-**Blogs**:
+
+## Documentaions
+
+
+## Blogs
 - [Forge Blog](https://aps.autodesk.com)
 - [Field of View](https://fieldofviewblog.wordpress.com/), a BIM focused blog
 
