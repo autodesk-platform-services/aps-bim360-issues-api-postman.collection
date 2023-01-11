@@ -90,9 +90,9 @@ To test uploading local files as attachments, run scripts in **Upload Local Att
 In BIM 360, the reference of issue with assets or rfis is managed by Relationships API, which is a common component across different modules in BIM 360. To work with **Issue>>References**, you can use [Relationship API](https://aps.autodesk.com/en/docs/acc/v1/reference/http/relationship-service-v2-search-relationships-GET/). This sample Postman collection includes one sample usage. For more detail about Relationships API, please take a look [at this blog](https://aps.autodesk.com/blog/bim-360acc-relationships-api). 
 
   -  Step-01 is to get supported Relationships. You can use this stop to check entity types that you can set relationships with BIM 360 issues.
-  -  The 02 step is to get one asset id by [Asset API](https://aps.autodesk.com/en/docs/BIM360/v1/reference/http/assets-assets-v2-GET/)
-  -  The 03 step is add reference between one issue and one asset
-  -  The 04 step get all referenced assets of one issue
+  -  Step-02 is to get one asset id by [Asset API](https://aps.autodesk.com/en/docs/BIM360/v1/reference/http/assets-assets-v2-GET/)
+  -  Step-02 is add a reference between one issue and one asset
+  -  Step-04 gets all referenced assets of one issue
 
 ## Documentaions
 
