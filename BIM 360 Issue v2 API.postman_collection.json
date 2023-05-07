@@ -1276,7 +1276,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"get one issue comments collection. Status code is 200\", function () {",
+									"pm.test(\"POST Attachments with document in visible folder. Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
 									" "
@@ -1994,7 +1994,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"get one issue comments collection. Status code is 200\", function () {",
+									"pm.test(\"Compelte a signed S3. Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
 									" "
@@ -2051,8 +2051,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"get one issue comments collection. Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
+									"pm.test(\"Update issue service that the file uploaded. Status code is 200\", function () {",
+									"    pm.response.to.have.status(202);",
 									"});",
 									" "
 								],
@@ -2071,7 +2071,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"uploadKey\":\"AQICAHifrJ6-BSHUmjAat4QWI...cdWHJD90Ec7ZAaODsH_1LqXihzMNcJBA==\"}"
+							"raw": "{ \"uploadKey\":\"{{s3_upload_key}}\"}"
 						},
 						"url": {
 							"raw": "{{base_domain}}/issues/v2/containers/:containerId/issues/:issueId/attachments/:attachmentId?task=post-upload-process",
