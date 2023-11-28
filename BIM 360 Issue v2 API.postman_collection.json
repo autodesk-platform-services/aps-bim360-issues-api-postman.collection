@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "649d5a7c-0b76-48a8-bf4b-8bedfa02665c",
-		"name": "BIM 360 Issue v2 API",
+		"_postman_id": "f481b440-88bb-427a-9364-6a8a7a245000",
+		"name": "BIM 360 Issue v2 API Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "7186"
+		"_exporter_id": "29581881"
 	},
 	"item": [
 		{
@@ -2340,7 +2340,7 @@
 			]
 		},
 		{
-			"name": "[backup] Authentication - get 2 legged token",
+			"name": "Authentication-2legged-backup",
 			"event": [
 				{
 					"listen": "test",
@@ -2353,29 +2353,44 @@
 						],
 						"type": "text/javascript"
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"var keys = pm.environment.get(\"client_id\") + \":\" +  pm.environment.get(\"client_secret\");\r",
+							"let encodedKeys = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(keys)); \r",
+							"pm.collectionVariables.set(\"encodedKeys\",encodedKeys);"
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
 						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic {{encodedKeys}}",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "urlencoded",
 					"urlencoded": [
-						{
-							"key": "client_id",
-							"value": "{{client_id}}",
-							"type": "text"
-						},
-						{
-							"key": "client_secret",
-							"value": "{{client_secret}}",
-							"type": "text"
-						},
 						{
 							"key": "grant_type",
 							"value": "client_credentials",
@@ -2383,7 +2398,7 @@
 						},
 						{
 							"key": "scope",
-							"value": "data:read account:read",
+							"value": "data:read data:write",
 							"type": "text"
 						},
 						{
@@ -2395,14 +2410,14 @@
 					]
 				},
 				"url": {
-					"raw": "{{base_domain}}/authentication/v1/authenticate",
+					"raw": "{{base_domain}}/authentication/v2/token",
 					"host": [
 						"{{base_domain}}"
 					],
 					"path": [
 						"authentication",
-						"v1",
-						"authenticate"
+						"v2",
+						"token"
 					]
 				}
 			},
@@ -2413,13 +2428,23 @@
 		"type": "oauth2",
 		"oauth2": [
 			{
-				"key": "scope",
-				"value": "data:read account:read data:write",
+				"key": "client_authentication",
+				"value": "header",
 				"type": "string"
 			},
 			{
-				"key": "client_authentication",
-				"value": "body",
+				"key": "accessTokenUrl",
+				"value": "https://developer.api.autodesk.com/authentication/v2/token",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "https://developer.api.autodesk.com/authentication/v2/authorize",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "data:read account:read data:write",
 				"type": "string"
 			},
 			{
@@ -2430,16 +2455,6 @@
 			{
 				"key": "clientId",
 				"value": "{{client_id}}",
-				"type": "string"
-			},
-			{
-				"key": "accessTokenUrl",
-				"value": "https://developer.api.autodesk.com/authentication/v1/gettoken",
-				"type": "string"
-			},
-			{
-				"key": "authUrl",
-				"value": "https://developer.api.autodesk.com/authentication/v1/authorize",
 				"type": "string"
 			},
 			{
